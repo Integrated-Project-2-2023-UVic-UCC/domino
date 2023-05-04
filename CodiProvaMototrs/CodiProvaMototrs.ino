@@ -12,10 +12,18 @@ pinMode(enablePin, OUTPUT);
 digitalWrite(enablePin, LOW);
 stepper1.setMaxSpeed(1000);
 stepper1.move(-6000); 
+<<<<<<< Updated upstream
 
 stepper2.setMaxSpeed(1000);
 stepper2.move(-6000); 
 
+=======
+stepper1.setAcceleration(1000);
+
+stepper2.setMaxSpeed(1000);
+stepper2.move(-6000); 
+stepper2.setAcceleration(1000);
+>>>>>>> Stashed changes
 }
 
 void loop() {
