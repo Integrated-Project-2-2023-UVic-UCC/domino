@@ -2,7 +2,7 @@
 #include <AccelStepper.h>
 #include <SoftwareSerial.h>
 
-SoftwareSerial Serial1(4,5); // RX, TX (Pins bluetooth)
+//SoftwareSerial Serial1(4,5); // RX, TX (Pins bluetooth)
 
 int stp1=9;
 int dir1=10;
@@ -35,9 +35,9 @@ void setup() {
 
   myservo.attach(7);
 
-  Serial1.begin(9600);
-  Serial1.setTimeout(1000);
-  Serial1.println("");
+  Serial.begin(9600);
+  Serial.setTimeout(1000);
+  Serial.println("");
 
 
 }
@@ -45,21 +45,21 @@ void setup() {
 void loop() {
     stepper1.run();
     stepper2.run();
-  int out = Serial1.readBytes((char *)(&frame), sizeof(frame));
+  int out = Serial.readBytes((char *)(&frame), sizeof(frame));
   //Serial.println(out);
   if(out) {
-    Serial1.print(frame.angle);
-    Serial1.print(",");
-    Serial1.println(frame.step);
-    Serial1.flush();
+    Serial.print(frame.angle);
+    Serial.print(",");
+    Serial.println(frame.step);
+    Serial.flush();
 
     // /do de work
     myservo.write(frame.angle);
     stepper1.move(frame.step);
     stepper2.move(frame.step);
     delay(3000);
-    Serial1.println("ok");
-    Serial1.flush();
+    Serial.println("ok");
+    Serial.flush();
   }
   
   }
