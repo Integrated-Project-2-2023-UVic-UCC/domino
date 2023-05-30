@@ -41,7 +41,7 @@ void setup() {
   stepper2.setSpeed(0);
 
   myservoReload.attach(7);
-  myservoDirection.attach(6);
+  myservoDirection.attach(5);
   myservoEmpuje.attach(3);
 
   Serial1.begin(9600);
